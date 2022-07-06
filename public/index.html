@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form >
+        <input type="text" name="Question" id="question">
+        <input type="text" name="Answer" id="answer">
+        <input type="file" name="file" id="file">
+    </form>
+    <button id = "save" >Save</button>
+</body>
+<script>
+    const q_id = new Date().toString().substring(8, 24);
+    // console.log(q_id)
+
+
+    async function upload(){
+        // e.preventDefault()
+        
+        const data = await fetch('http://localhost:3000/upload',{
+            method : 'post',
+            body:JSON.stringify({
+                q_id:q_id,
+                question:question.value,
+                answer:answer.value,
+                imageUrl:'a'
+            }),
+
+        })
+        console.log(data)
+        // console.log(data.json())
+        
+    }
+    console.log(save)
+    save.addEventListener('click', upload)
+</script>
+</html>
